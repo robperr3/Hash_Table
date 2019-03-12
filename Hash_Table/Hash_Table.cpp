@@ -43,14 +43,16 @@ public:
 
 template <typename K, typename V>
 class HashTable
-{private:
+{
+private:
 	//int slot; if my vectors are going to be a set size i dont even need this
 	vector<typename K, typename V>*table;
 
 public:
 	HashTable()
 	{
-		table = nullptr;//vector< K, V >table(TABLE_SIZE);
+		vector< K, V>*table(TABLE_SIZE);
+
 	}
 	/*HashTable(int init_S)
 	{
@@ -58,19 +60,14 @@ public:
 		table = nullptr;
 	}*/
 
-	HashTable(K key, V value )//no arguments
-	{
-		table = vector< K, V >table(TABLE_SIZE);//is this how i would initialize a new vecrtor since i want the vector to have a fixed size of indexes? 
-	}// while{hashtable<>[i]= NULL}
-	
 
 	int HashAlg(K init_K)//this code wont compile because it doesnt like the <> in the ()
 	{								//but if i get rid of them then init_K is no longer recognized in the functions 
-		int hash = init_K.length % 3; 
+		int hash = init_K.length % 3;
 		return hash;
 	}
 
-	 void HInsert(K init_K)
+	void HInsert(K init_K)
 	{
 		if (init_K != NULL)
 		{
@@ -78,19 +75,19 @@ public:
 			{
 				table[HashAlg(init_K)] = init_K;// is this correct? or should i use the vector method insert, like this vector.insert(HashAlg(init_K), init_K)
 			}
-			
+
 		}
 		else { cout << "You cannot insert an empty Key!!!" << endl; }
-		
+
 	}
 
-	void Display()
+	/*void Display()
 	{
 		for (int i = 0; i < TABLE_SIZE; i++)
 		{
 			cout << table[i] << "\n" << endl;
 		}
-	}
+	}*/
 };
 
 
@@ -99,8 +96,8 @@ int main()
 	HNode<string, int> N1("Rob", 3);
 	HashTable<string, int>* HT1;
 	HT1->HInsert(N1.key);//this needs to b Insert(key, value), that measns function must b INsert(type k, type V)
-	HT1->Display();
-	
+	//HT1->Display();
+
 }
 
 
