@@ -49,9 +49,9 @@ private:
 	vector<typename K, typename V>*table;
 
 public:
-	HashTable()
+	HashTable(K,V)
 	{
-		vector< K, V>*table(TABLE_SIZE);
+		vector< K, V>*table(3);
 
 	}
 	/*HashTable(int init_S)
@@ -67,17 +67,19 @@ public:
 		return hash;
 	}
 
-	void HInsert(K init_K)
+	void HInsert(K init_K, V init_V)
 	{
-		if (init_K != NULL)
-		{
-			while (table[hash] != NULL && table[hash]->getKey() != init_K)
+		HNode<K, V>HN1(init_K,init_V);
+		int index = HashAlg(init_K);
+		
+			if (HN1.key == NULL){ cout << "You cannot insert an empty Key!!!" << endl; }
+
+			else
 			{
-				table[HashAlg(init_K)] = init_K;// is this correct? or should i use the vector method insert, like this vector.insert(HashAlg(init_K), init_K)
+				table.at(index) = HN1;// is this correct? or should i use the vector method insert, like this vector.insert(HashAlg(init_K), init_K)
 			}
 
-		}
-		else { cout << "You cannot insert an empty Key!!!" << endl; }
+			
 
 	}
 
@@ -95,7 +97,7 @@ int main()
 {
 	HNode<string, int> N1("Rob", 3);
 	HashTable<string, int>* HT1;
-	HT1->HInsert(N1.key);//this needs to b Insert(key, value), that measns function must b INsert(type k, type V)
+	HT1->HInsert("Rob", 3);//this needs to b Insert(key, value), that means function must b INsert(type k, type V)
 	//HT1->Display();
 
 }
