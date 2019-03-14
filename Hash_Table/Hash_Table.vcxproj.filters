@@ -26,5 +26,8 @@
     <ClCompile Include="Hash_Table.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Linked_List_Milestone\Linked_List_Milestone\Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

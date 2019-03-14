@@ -4,7 +4,8 @@
 #include "pch.h"
 #include <iostream>
 #include <string>
-#include <vector>
+#include <array>
+#include "Source.cpp"
 #define TABLE_SIZE = 3
 
 using namespace std;
@@ -46,7 +47,7 @@ class HashTable
 {
 private:
 	int slot;
-	vector<typename K, typename V>*table;
+	array<HNode<K,V>>[100]*table;
 
 public:
 	HashTable()
@@ -61,10 +62,10 @@ public:
 		table = nullptr;
 	}*/
 
-	HashTable(int slot)
+	HashTable(K,V, int slot)
 	{
-		table = new vector<K, V>T();
-		T.reserve(slot);
+		new HNode(K, V);
+		table =  array<DL_List>T();
 	}
 
 
