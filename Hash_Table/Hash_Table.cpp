@@ -45,13 +45,14 @@ template <typename K, typename V>
 class HashTable
 {
 private:
-	//int slot; if my vectors are going to be a set size i dont even need this
+	int slot;
 	vector<typename K, typename V>*table;
 
 public:
-	HashTable(K,V)
+	HashTable()
 	{
-		vector< K, V>*table(3);
+		slot= NULL;
+		table = nullptr;
 
 	}
 	/*HashTable(int init_S)
@@ -59,6 +60,12 @@ public:
 		slot = init_S;
 		table = nullptr;
 	}*/
+
+	HashTable(int slot)
+	{
+		table = new vector<K, V>T();
+		T.reserve(slot);
+	}
 
 
 	int HashAlg(K init_K)//this code wont compile because it doesnt like the <> in the ()
@@ -69,23 +76,18 @@ public:
 
 	void HInsert(K init_K, V init_V)
 	{
-		HNode<K, V>HN1(init_K,init_V);
-		int index = HashAlg(init_K);
-		
-			if (HN1.key == NULL){ cout << "You cannot insert an empty Key!!!" << endl; }
-
-			else
-			{
-				table.at(index) = HN1;// is this correct? or should i use the vector method insert, like this vector.insert(HashAlg(init_K), init_K)
-			}
-
-			
-
+		//int index = HashAlg(init_K);
+		if (init_K != NULL)
+		{
+			table[HashAlg(init_K)] = new HNode(init_K, init_V);// is this correct? or should i use the vector method insert, like this vector.insert(HashAlg(init_K), init_K)
+		}
+		else { cout << "You cannot insert an empty Key!!!" << endl; }
 	}
+	
 
 	/*void Display()
 	{
-		for (int i = 0; i < TABLE_SIZE; i++)
+		for (int i = 0; i < slot; i++)
 		{
 			cout << table[i] << "\n" << endl;
 		}
